@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yosemite Family Trip Guide 2026 · Brian Wan</title>
+<style>
+  :root {
+    --teal:#0F6E56;--teal-light:#E1F5EE;--teal-dark:#085041;
+    --blue:#185FA5;--blue-light:#E6F1FB;
+    --amber:#854F0B;--amber-light:#FAEEDA;
+    --purple:#534AB7;--purple-light:#EEEDFE;
+    --red:#A32D2D;--red-light:#FCEBEB;
+    --green:#3B6D11;
+    --gray:#5F5E5A;--gray-light:#F1EFE8;
+    --text:#1a1a18;--text-muted:#6b6b65;--text-faint:#9a9a93;
+    --border:rgba(0,0,0,0.1);--border-mid:rgba(0,0,0,0.15);
+    --bg:#fafaf8;--bg-card:#ffffff;--bg-sec:#f4f3ef;
+    --r:10px;--rs:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:14px;}
+
+  .header{background:var(--teal);color:#fff;padding:28px 20px 22px;}
+  .header h1{font-size:22px;font-weight:600;letter-spacing:-0.3px;}
+  .header p{font-size:13px;opacity:.8;margin-top:4px;}
+  .h-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .h-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 12px;font-size:12px;}
+  .h-conf{background:rgba(255,255,255,.9);color:var(--teal-dark);font-weight:500;}
+
+  .day-nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .dn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border-mid);background:var(--bg-sec);color:var(--text-muted);cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;white-space:nowrap;}
+  .dn:hover{border-color:var(--gray);color:var(--text);}
+  .dn.on{color:#fff;border-color:transparent;}
+  .dn.d1.on{background:var(--teal);}
+  .dn.d2.on{background:var(--blue);}
+  .dn.d3.on{background:var(--amber);}
+  .dn.d4.on{background:var(--purple);}
+
+  .dc{display:none;padding:16px;max-width:780px;margin:0 auto;}
+  .dc.on{display:block;}
+
+  .ds{border-radius:var(--r);padding:14px 16px;margin-bottom:16px;color:#fff;}
+  .ds h2{font-size:15px;font-weight:600;}
+  .ds p{font-size:12px;opacity:.8;margin-top:3px;}
+  .ds-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .ds-stat{background:rgba(255,255,255,.2);border-radius:var(--rs);padding:6px 10px;text-align:center;flex:1;min-width:70px;}
+  .ds-stat .v{font-size:13px;font-weight:600;}
+  .ds-stat .l{font-size:10px;opacity:.75;margin-top:1px;}
+  .d1s{background:var(--teal);}.d2s{background:var(--blue);}.d3s{background:var(--amber);}.d4s{background:var(--purple);}
+
+  .ev{display:flex;margin-bottom:0;}
+  .el{width:62px;flex-shrink:0;padding:12px 8px 12px 0;text-align:right;}
+  .et{font-size:11px;font-weight:600;color:var(--text-muted);}
+  .ed{font-size:10px;color:var(--text-faint);margin-top:2px;}
+  .esp{width:24px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:14px;}
+  .edot{width:10px;height:10px;border-radius:50%;border:2px solid;flex-shrink:0;}
+  .eline{width:1.5px;flex:1;min-height:18px;margin-top:3px;opacity:.2;}
+  .eb{flex:1;padding:10px 0 16px 10px;}
+  .etitle{font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .echips{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+
+  .chip{font-size:10px;font-weight:500;padding:2px 7px;border-radius:8px;white-space:nowrap;}
+  .cd{background:#FAEEDA;color:#633806;}
+  .cp{background:#E6F1FB;color:#0C447C;}
+  .cw{background:#E1F5EE;color:#085041;}
+  .cf{background:#FBEAF0;color:#4B1528;}
+  .ch{background:#EEEDFE;color:#26215C;}
+  .cwa{background:#FCEBEB;color:#A32D2D;}
+  .cc{background:#1D9E75;color:#fff;}
+
+  .info{background:var(--bg-sec);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;margin-top:8px;}
+  .ir{display:flex;gap:8px;margin-bottom:4px;align-items:flex-start;}
+  .ir:last-child{margin-bottom:0;}
+  .il{font-size:10px;font-weight:500;color:var(--text-faint);min-width:52px;padding-top:2px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em;}
+  .iv{font-size:12px;color:var(--text-muted);flex:1;line-height:1.6;}
+  .iv a{color:var(--blue);text-decoration:none;font-weight:500;}
+  .iv a:hover{text-decoration:underline;}
+  .rd{display:inline-block;font-size:10px;font-weight:600;padding:1px 5px;border-radius:3px;background:var(--blue);color:#fff;margin:0 1px;}
+
+  .sdiv{border:none;border-top:1px dashed var(--border-mid);margin:4px 0 12px 86px;}
+
+  .wb{border-radius:var(--rs);padding:9px 12px;margin:8px 0 0;font-size:12px;line-height:1.65;}
+  .wba{background:var(--amber-light);color:#633806;border-left:3px solid var(--amber);border-radius:0 var(--rs) var(--rs) 0;}
+  .wbr{background:var(--red-light);color:var(--red);border-left:3px solid var(--red);border-radius:0 var(--rs) var(--rs) 0;}
+
+  .atl{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--bg-sec);border:1px solid var(--border);border-radius:var(--rs);margin-top:6px;font-size:12px;color:var(--blue);text-decoration:none;font-weight:500;}
+  .atl:hover{background:var(--blue-light);}
+
+  .footer{background:var(--gray-light);border-top:1px solid var(--border);padding:20px 16px;text-align:center;color:var(--text-faint);font-size:11px;margin-top:24px;}
+  .footer strong{color:var(--text-muted);}
+
+  @media print{
+    .day-nav{display:none;}
+    .dc{display:block!important;page-break-after:always;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏔 Yosemite Family Trip Guide 2026</h1>
+  <p>Brian Wan Family · 4 Days / 3 Nights · Aug 3 (Mon) – Aug 6 (Thu) · Departing from San Francisco</p>
+  <div class="h-pills">
+    <span class="h-pill">🏕 Sierra Mountain Lodge, Ahwahnee</span>
+    <span class="h-pill">👨‍👩‍👧‍👦 Family of 4</span>
+    <span class="h-pill">📞 (559) 683-7673</span>
+    <span class="h-pill h-conf">✓ Mountain Room Booked Aug 5 @ 5:00pm</span>
+  </div>
+</div>
+
+<div class="day-nav">
+  <button class="dn d1 on" onclick="sd('d1',this)">🟢 8/3 Day 1</button>
+  <button class="dn d2" onclick="sd('d2',this)">🔵 8/4 Day 2</button>
+  <button class="dn d3" onclick="sd('d3',this)">🟠 8/5 Day 3</button>
+  <button class="dn d4" onclick="sd('d4',this)">🟣 8/6 Day 4</button>
+</div>
+
+<!-- ======== DAY 1 ======== -->
+<div class="dc on" id="d1">
+  <div class="ds d1s">
+    <h2>Day 1 — San Francisco → Oakhurst Grocery → Yosemite Valley → Sierra Mountain Lodge</h2>
+    <p>Monday, August 3</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">5:30 AM</div><div class="l">Breakfast</div></div>
+      <div class="ds-stat"><div class="v">6:00 AM</div><div class="l">Depart</div></div>
+      <div class="ds-stat"><div class="v">280 mi</div><div class="l">Total Distance</div></div>
+      <div class="ds-stat"><div class="v">~4.5 h</div><div class="l">Drive Time</div></div>
+      <div class="ds-stat"><div class="v">~1.5 km</div><div class="l">Walking</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">5:30 AM</div><div class="ed">30 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#0F6E56;background:#0F6E56"></div><div class="eline" style="background:#0F6E56"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 Breakfast at Home</div>
+      <div class="echips"><span class="chip cf">Breakfast</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Tip</span><span class="iv">Keep it light — oatmeal, eggs on toast, or cereal. Eat well before the long drive; no need to stop for breakfast on the road.</span></div>
+        <div class="ir"><span class="iv">Pack 1.5L of water per person for the car + snacks (nuts, fruit, energy bars).</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">6:00 AM</div><div class="ed">Depart</div></div>
+    <div class="esp"><div class="edot" style="border-color:#0F6E56;background:#0F6E56"></div><div class="eline" style="background:#0F6E56"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Depart San Francisco</div>
+      <div class="echips"><span class="chip cd">Drive ~3 hrs to Oakhurst</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv"><span class="rd">I-680 N</span>→<span class="rd">I-580 E</span>→<span class="rd">I-205 E</span>→<span class="rd">CA-120 E</span>→<span class="rd">CA-140 E</span></span></div>
+        <div class="ir"><span class="il">Tip</span><span class="iv">Early departure avoids Bay Area rush hour. Drive straight to Oakhurst without stopping.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">9:00 AM</div><div class="ed">40 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🛒 Vons Supermarket — Oakhurst</div>
+      <div class="echips"><span class="chip cf">Grocery Run</span><span class="chip cp">Free Parking</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Free large lot at the store entrance · <a href="https://maps.google.com/?q=37.3304,-119.6590" target="_blank">📍 37.3304, -119.6590</a></span></div>
+        <div class="ir"><span class="il">Buy</span><span class="iv">4-day breakfast supplies, picnic lunch materials, BBQ dinner ingredients, trail snacks, drinking water, sunscreen</span></div>
+        <div class="ir"><span class="il">Next</span><span class="iv">Continue on <span class="rd">CA-140 E</span> to Arch Rock Entrance (recommended — drives directly into the Valley)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:15 AM</div><div class="ed">Park Entry</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🎫 Arch Rock Entrance — Enter the Park</div>
+      <div class="echips"><span class="chip cd">Drive In</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Fee</span><span class="iv">Digital pass $35/vehicle — buy in advance at <a href="https://recreation.gov" target="_blank">recreation.gov</a> for faster entry</span></div>
+        <div class="ir"><span class="il">Route</span><span class="iv">Continue on <span class="rd">CA-140 E</span> into the Valley along the scenic Merced River canyon</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:45 AM</div><div class="ed">30 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">💧 Bridalveil Fall</div>
+      <div class="echips"><span class="chip cp">Parking Lot</span><span class="chip cw">0.8 km round trip · 20–30 min</span><span class="chip cw">Easy</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Bridalveil Fall Parking Lot (free) · <a href="https://maps.google.com/?q=37.7168,-119.6514" target="_blank">📍 37.7168, -119.6514</a></span></div>
+        <div class="ir"><span class="il">Trail</span><span class="iv">Parking lot → paved path uphill → fork right → first viewpoint (0.3 km) → base of falls (0.4 km) → return same way</span></div>
+        <div class="ir"><span class="il">Note</span><span class="iv">Expect mist — bring a light rain jacket. 620 ft waterfall; water flow is lighter in August but still beautiful.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">11:30 AM</div><div class="ed">60 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🥪 Yosemite Village — Lunch</div>
+      <div class="echips"><span class="chip cp">Village Parking Lot</span><span class="chip cf">Village Grill</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Yosemite Village Lot A/B (free) · <a href="https://maps.google.com/?q=37.7486,-119.5874" target="_blank">📍 37.7486, -119.5874</a></span></div>
+        <div class="ir"><span class="il">Lunch</span><span class="iv">Village Grill: burgers, sandwiches, vegetarian options, outdoor patio. Budget ~$70–100 for 4. Expect 10–20 min wait in peak season.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:30 PM</div><div class="ed">60 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🏛️ Yosemite Valley Visitor Center — Geology Exhibits</div>
+      <div class="echips"><span class="chip cw">3-min walk from lunch</span><span class="chip cw">Free Admission</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Content</span><span class="iv">Glacier erosion geology exhibits, ecosystems, Native American culture. A must for your science-loving daughter. Air-conditioned. Open 9am–5pm.</span></div>
+        <div class="ir"><span class="il">Tip</span><span class="iv">The gift shop next door sells geology/science themed items — browse now, buy on Day 3 so you don't carry them hiking.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">1:30 PM</div><div class="ed">75 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🧗 El Capitan Meadow Stroll</div>
+      <div class="echips"><span class="chip cw">Free Valley Shuttle</span><span class="chip cw">Meadow walk ~30 min</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Transit</span><span class="iv">Valley Shuttle (free) from Village stop → El Capitan Meadow stop, about 10 minutes</span></div>
+        <div class="ir"><span class="il">Activity</span><span class="iv">Bring binoculars to spot climbers on El Capitan's walls. Flat meadow, easy stroll, great for photos.</span></div>
+        <div class="ir"><span class="il">Return</span><span class="iv">Shuttle back to Village to pick up the car. Back at parking lot by around 3:00 PM.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">3:00 PM</div><div class="ed">60 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5DCAA5;background:#5DCAA5"></div><div class="eline" style="background:#5DCAA5"></div></div>
+    <div class="eb">
+      <div class="etitle">☕ Flex Time — Valley View / Rest</div>
+      <div class="echips"><span class="chip cw">Optional</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Option A</span><span class="iv">Valley View roadside pullout (near Bridalveil parking) — great full-valley panorama, about 30 minutes</span></div>
+        <div class="ir"><span class="il">Option B</span><span class="iv">Rest by the Merced River, grab coffee, recharge before the evening viewpoint</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">4:00 PM</div><div class="ed">⚑ Deadline</div></div>
+    <div class="esp"><div class="edot" style="border-color:#D85A30;background:#D85A30"></div><div class="eline" style="background:#D85A30"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Leave by 4:00 PM — Head to Tunnel View</div>
+      <div class="echips"><span class="chip cd">~5 min drive</span><span class="chip cwa">15–20 min parking buffer</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Village Lot → <span class="rd">Northside Dr</span> westbound → <span class="rd">Wawona Rd</span> → Tunnel View parking area</span></div>
+        <div class="ir"><span class="il">Parking</span><span class="iv">Tunnel View east lot (free, ~40 spaces — extremely competitive in peak season) · <a href="https://maps.google.com/?q=37.7158,-119.6775" target="_blank">📍 37.7158, -119.6775</a></span></div>
+        <div class="ir"><span class="il">Backup</span><span class="iv">If lot is full → park at Bridalveil Fall lot and walk 5 min to the viewpoint</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">4:20 PM</div><div class="ed">~2.5 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🌅 Tunnel View — Golden Hour + Sunset Panorama</div>
+      <div class="echips"><span class="chip cw">Walk &lt;50m</span><span class="chip cw">Golden Hour ~6:50 PM</span><span class="chip cw">August Sunset ~8:00 PM</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">View</span><span class="iv">El Capitan (left) + Half Dome (center-far) + Bridalveil Fall (right) — Yosemite's most iconic panoramic shot.</span></div>
+        <div class="ir"><span class="il">Photos</span><span class="iv">Golden hour (6:50–7:10 PM) gives the best warm light on El Capitan. Bring a tripod for best results.</span></div>
+      </div>
+      <div class="wb wba">💡 August sunset is around 7:50–8:10 PM, but the best photography light is 1 hour before — no need to wait for full dark before heading out.</div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:00 PM</div><div class="ed">Arrive ~7:45</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 Check In — Sierra Mountain Lodge</div>
+      <div class="echips"><span class="chip ch">Booked</span><span class="chip cp">Free Private Parking</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Tunnel View → <span class="rd">Wawona Rd</span> → <span class="rd">CA-41 S</span> → Ahwahnee, Fort Nip Trail, ~45 min</span></div>
+        <div class="ir"><span class="il">Parking</span><span class="iv">Free covered parking at the lodge · <a href="https://maps.google.com/?q=37.4036,-119.7308" target="_blank">📍 37.4036, -119.7308</a></span></div>
+        <div class="ir"><span class="il">Check-in</span><span class="iv">Self check-in via keypad (code in booking confirmation email). Sierra Suite: 1,200 sq ft, 2-story, sleeps 4, full gas kitchen.</span></div>
+        <div class="ir"><span class="il">Phone</span><span class="iv"><a href="tel:+15596837673">(559) 683-7673</a> (daily 8am–8pm PST)</span></div>
+        <div class="ir"><span class="il">Evening</span><span class="iv">BBQ dinner on the deck (groceries already from Vons) + stargazing. Prep tomorrow's picnic lunch tonight. Early start at 6:30 AM.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 2 ======== -->
+<div class="dc" id="d2">
+  <div class="ds d2s">
+    <h2>Day 2 — Glacier Point · Sentinel Dome · Mariposa Grove · Merced River Swim</h2>
+    <p>Tuesday, August 4 · Loop route inside the park</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">6:30 AM</div><div class="l">Depart</div></div>
+      <div class="ds-stat"><div class="v">~80 mi</div><div class="l">In-Park Miles</div></div>
+      <div class="ds-stat"><div class="v">~2.5 h</div><div class="l">Drive Time</div></div>
+      <div class="ds-stat"><div class="v">~7 km</div><div class="l">Walking</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">6:00 AM</div><div class="ed">30 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 Lodge Breakfast + Pack Picnic Lunch</div>
+      <div class="echips"><span class="chip cf">Self-Cook at Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Breakfast</span><span class="iv">Eggs on toast + coffee using the full gas kitchen. Takes about 20 minutes.</span></div>
+        <div class="ir"><span class="il">Pack</span><span class="iv">Box up today's picnic lunch (sandwiches/bread/fruit). Bring enough water, sunscreen, and a jacket (Glacier Point is cold at elevation in the morning).</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">6:30 AM</div><div class="ed">1h 15min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Lodge → Glacier Point</div>
+      <div class="echips"><span class="chip cd">~50 miles, 1h 15min</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv"><span class="rd">CA-41 N</span> → South Entrance → <span class="rd">Wawona Rd</span> → <span class="rd">Glacier Point Rd</span> (turn right) → Glacier Point parking lot</span></div>
+        <div class="ir"><span class="il">Tip</span><span class="iv">Leave early to get a parking spot. Glacier Point Rd has beautiful views — feel free to pull over and photograph along the way.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">8:15 AM</div><div class="ed">90 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🔭 Glacier Point Viewpoint</div>
+      <div class="echips"><span class="chip cp">Parking Lot</span><span class="chip cw">Walk &lt;200m</span><span class="chip cw">Very Easy</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Glacier Point Lot (free, ~150 spaces, restrooms on site) · <a href="https://maps.google.com/?q=37.7277,-119.5743" target="_blank">📍 37.7277, -119.5743</a></span></div>
+        <div class="ir"><span class="il">Walk</span><span class="iv">3-min paved walk from parking lot to the main viewpoint. At 7,214 ft elevation, eye-level with Half Dome.</span></div>
+        <div class="ir"><span class="il">Highlights</span><span class="iv">Aerial view down onto Vernal Fall and Nevada Fall. Ranger talk starts around 9 AM — great for your daughter's science interest.</span></div>
+        <div class="ir"><span class="il">Note</span><span class="iv">Bring a jacket — cold at high elevation in the morning. Arrive before 8 AM for easier parking.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:00 AM</div><div class="ed">5 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Move Car → Sentinel Dome Trailhead</div>
+      <div class="echips"><span class="chip cd">Back along Glacier Point Rd ~5 min</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Glacier Point lot → head west on Glacier Point Rd ~1 mile → Sentinel Dome / Taft Point trailhead parking</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:30 AM</div><div class="ed">1.5–2 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🥾 Sentinel Dome Hike</div>
+      <div class="echips"><span class="chip cp">Trailhead Lot</span><span class="chip cw">3.5 mi round trip</span><span class="chip cw">390 ft gain</span><span class="chip cw">Moderate</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Sentinel Dome / Taft Point Trailhead (free, restrooms) · <a href="https://maps.google.com/?q=37.7126,-119.5863" target="_blank">📍 37.7126, -119.5863</a></span></div>
+        <div class="ir"><span class="il">Trail</span><span class="iv">Trailhead → wooden bridge (0.3 km) → open granite slabs → dome base (0.9 km) → steep rock scramble → summit (1.1 km) → return same way</span></div>
+        <div class="ir"><span class="il">Summit</span><span class="iv">360° panorama: El Capitan, Yosemite Falls, Half Dome, Nevada Fall — best all-around view in the park</span></div>
+        <div class="ir"><span class="il">Note</span><span class="iv">No permit needed. Final 300m is bare granite slope — grippy shoes essential. No shade, bring sunscreen and water.</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/sentinel-dome-trail" target="_blank">🗺 AllTrails — Sentinel Dome Trail</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">1:00 PM</div><div class="ed">Picnic</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🧺 Picnic Lunch</div>
+      <div class="echips"><span class="chip cf">Packed from Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Where</span><span class="iv">At the Sentinel Dome summit (best views) or at the trailhead. Or find a meadow pullout along Glacier Point Rd.</span></div>
+        <div class="ir"><span class="il">Savings</span><span class="iv">Self-packed lunch saves $50–60 vs. eating at a park restaurant</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">2:00 PM</div><div class="ed">30 min drive</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Drive to Mariposa Grove</div>
+      <div class="echips"><span class="chip cd">Glacier Point Rd → CA-41 S, ~15 miles</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Trailhead → <span class="rd">Glacier Point Rd</span> → <span class="rd">CA-41 S</span> toward South Entrance → right turn at Mariposa Grove sign</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">2:30 PM</div><div class="ed">1.5–2 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#3B6D11;background:#3B6D11"></div><div class="eline" style="background:#3B6D11"></div></div>
+    <div class="eb">
+      <div class="etitle">🌲 Mariposa Grove — Grizzly Giant Loop</div>
+      <div class="echips"><span class="chip cp">Shuttle Parking Lot</span><span class="chip cw">2 mi loop</span><span class="chip cw">300 ft gain</span><span class="chip cw">Easy–Moderate</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Mariposa Grove shuttle lot (free) · <a href="https://maps.google.com/?q=37.5065,-119.6307" target="_blank">📍 37.5065, -119.6307</a> → free shuttle bus 5 min into the grove</span></div>
+        <div class="ir"><span class="il">Trail</span><span class="iv">Grove entrance → Fallen Monarch (0.2 km) → Bachelor &amp; Three Graces (0.5 km) → Grizzly Giant (0.8 km) → California Tunnel Tree (1.0 km) → loop back (2.0 km)</span></div>
+        <div class="ir"><span class="il">Highlights</span><span class="iv">Grizzly Giant: 1,800 years old, 30-ft diameter, 200 ft tall. California Tunnel Tree — you can walk through it!</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/grizzly-giant-loop-trail" target="_blank">🗺 AllTrails — Grizzly Giant Loop</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">4:30 PM</div><div class="ed">90 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🏊 Merced River Swim — Sentinel Beach</div>
+      <div class="echips"><span class="chip cp">Free Parking</span><span class="chip cw">Walk &lt;100m</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Sentinel Beach parking area (free, restrooms + picnic tables) · <a href="https://maps.google.com/?q=37.7345,-119.6053" target="_blank">📍 37.7345, -119.6053</a></span></div>
+        <div class="ir"><span class="il">Route</span><span class="iv">Mariposa Grove → <span class="rd">CA-41 N</span> into the Valley → Sentinel Beach, ~30 min</span></div>
+        <div class="ir"><span class="iv">Cool off after a big day of hiking. August temps hit 90°F+ in the Valley — the kids will love this. Bring swimwear and towels.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:30 PM</div><div class="ed">~45 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 Back to Lodge — BBQ Dinner + Stargazing</div>
+      <div class="echips"><span class="chip cd">CA-41 S, ~45 min</span><span class="chip ch">Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Sentinel Beach → <span class="rd">Southside Dr</span> → <span class="rd">CA-41 S</span> → Ahwahnee</span></div>
+        <div class="ir"><span class="il">Evening</span><span class="iv">BBQ on the private grill. Ahwahnee has minimal light pollution — the Milky Way is visible in August. Day 3 is the biggest day, get to bed early.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 3 ======== -->
+<div class="dc" id="d3">
+  <div class="ds d3s">
+    <h2>Day 3 — Check-Out · Mist Trail · Souvenir Shopping · Mountain Room Dinner ✓</h2>
+    <p>Wednesday, August 5 · Mountain Room booked at 5:00 PM · (209) 372-1403</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">6:30 AM</div><div class="l">Breakfast</div></div>
+      <div class="ds-stat"><div class="v">7:00 AM</div><div class="l">Check-Out</div></div>
+      <div class="ds-stat"><div class="v">~6 km</div><div class="l">Walking</div></div>
+      <div class="ds-stat"><div class="v">5:00 PM</div><div class="l">Mountain Room</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">6:30 AM</div><div class="ed">30 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#854F0B;background:#854F0B"></div><div class="eline" style="background:#854F0B"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 Lodge Breakfast + Pack Up</div>
+      <div class="echips"><span class="chip cf">Self-Cook at Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Breakfast</span><span class="iv">Oatmeal or eggs on toast. Pack luggage at the same time — bags go in the car, no need to return to the lodge tonight.</span></div>
+        <div class="ir"><span class="il">Pack</span><span class="iv">Rain jacket (essential for Mist Trail), grippy hiking shoes, spare dry clothes (you will get soaked), dinner outfit in car</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:00 AM</div><div class="ed">Check-Out</div></div>
+    <div class="esp"><div class="edot" style="border-color:#854F0B;background:#854F0B"></div><div class="eline" style="background:#854F0B"></div></div>
+    <div class="eb">
+      <div class="etitle">🚪 Check Out — Bags in Car, Head to Valley</div>
+      <div class="echips"><span class="chip cd">~50 min to Happy Isles</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Fort Nip Trail → <span class="rd">CA-41 N</span> → South Entrance → <span class="rd">Wawona Rd</span> → into the Valley → <span class="rd">Southside Dr</span> → Happy Isles trailhead</span></div>
+        <div class="ir"><span class="il">Note</span><span class="iv">No need to return to the lodge. Tonight: return to lodge for the final night (Day 4 checkout). Bags stay in the car all day.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">8:30 AM</div><div class="ed">2–2.5 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🌊 Mist Trail → Vernal Fall</div>
+      <div class="echips"><span class="chip cp">Happy Isles Parking</span><span class="chip cw">3 mi round trip</span><span class="chip cw">1,000 ft gain</span><span class="chip cwa">600 granite steps</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Happy Isles Trailhead (free, bear boxes on site) · <a href="https://maps.google.com/?q=37.7349,-119.5665" target="_blank">📍 37.7349, -119.5665</a> — arrive before 9 AM to get a spot</span></div>
+        <div class="ir"><span class="il">Backup</span><span class="iv">If full → Curry Village · <a href="https://maps.google.com/?q=37.7361,-119.5686" target="_blank">📍 37.7361, -119.5686</a> → free shuttle stop #16</span></div>
+        <div class="ir"><span class="il">Bear Box</span><span class="iv">All food and scented items MUST go in the bear boxes at the trailhead — bears will break car windows</span></div>
+        <div class="ir"><span class="il">Trail</span><span class="iv">Trailhead → footbridge viewpoint (1.2 km — easy turnaround option) → Mist/JMT fork (1.4 km) → 600 granite steps → top of Vernal Fall (2.4 km) → descend via John Muir Trail (recommended — easier on knees)</span></div>
+        <div class="ir"><span class="il">Gear</span><span class="iv">Rain jacket essential — the mist drenches everything. Grippy shoes. Go up on Mist Trail, come down on John Muir Trail.</span></div>
+      </div>
+      <div class="wb wbr">⚠️ Safety: Never enter the river or Emerald Pool — currents are deadly despite calm appearance. Steps are very slippery; descending is more dangerous than ascending. Stay focused.</div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/vernal-and-nevada-falls-via-the-mist-trail" target="_blank">🗺 AllTrails — Mist Trail (Vernal &amp; Nevada Falls)</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">11:30 AM</div><div class="ed">~8 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Move Car → Yosemite Village</div>
+      <div class="echips"><span class="chip cd">Along Valley Rd</span></div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:00 PM</div><div class="ed">2 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🥪 Light Lunch + Souvenir Shopping — Yosemite Village</div>
+      <div class="echips"><span class="chip cf">Degnan's Kitchen</span><span class="chip cp">Village Parking Lot</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Yosemite Village Lot A/B (free) · <a href="https://maps.google.com/?q=37.7486,-119.5874" target="_blank">📍 37.7486, -119.5874</a></span></div>
+        <div class="ir"><span class="il">Lunch</span><span class="iv">Degnan's Kitchen sandwiches ($13–16/person). Light meal — save room for the Mountain Room dinner tonight.</span></div>
+        <div class="ir"><span class="il">Shopping</span><span class="iv">Valley Visitor Center gift shop: geology/science picks for your daughter, souvenir T-shirts. Freshen up and change for dinner.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">4:00 PM</div><div class="ed">⚑ Deadline</div></div>
+    <div class="esp"><div class="edot" style="border-color:#D85A30;background:#D85A30"></div><div class="eline" style="background:#D85A30"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Leave by 4:00 PM — Head to Mountain Room</div>
+      <div class="echips"><span class="chip cd">Village → Valley Lodge, ~5 min</span><span class="chip cwa">Arrive at lot by 4:45 PM</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Village lot → <span class="rd">Northside Dr</span> → Yosemite Valley Lodge</span></div>
+        <div class="ir"><span class="il">Parking</span><span class="iv">Yosemite Valley Lodge parking (free) · <a href="https://maps.google.com/?q=37.7437,-119.5989" target="_blank">📍 37.7437, -119.5989</a></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">4:45 PM</div><div class="ed">Res. @ 5:00 PM</div></div>
+    <div class="esp"><div class="edot" style="border-color:#1D9E75;background:#1D9E75"></div><div class="eline" style="background:#1D9E75"></div></div>
+    <div class="eb">
+      <div class="etitle">🍽️ Mountain Room Restaurant <span class="chip cc">✓ Booked 5:00 PM</span></div>
+      <div class="echips"><span class="chip cp">Valley Lodge Free Parking</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Location</span><span class="iv">Yosemite Valley Lodge — after parking, turn left, restaurant is on the right side of the main building, ~3-min walk</span></div>
+        <div class="ir"><span class="il">Menu</span><span class="iv">Steak, trout, seafood. Full waterfall view dining room. Budget ~$220–320 for 4 (tax + tip included).</span></div>
+        <div class="ir"><span class="il">Phone</span><span class="iv"><a href="tel:+12093721403">(209) 372-1403</a></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:00 PM</div><div class="ed">Arrive ~7:45</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 Back to Lodge — Final Night</div>
+      <div class="echips"><span class="chip cd">CA-41 S, ~45 min</span><span class="chip ch">Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Valley Lodge → <span class="rd">CA-41 S</span> → Ahwahnee. Arrive ~7:45 PM.</span></div>
+        <div class="ir"><span class="iv">Relax and wind down. Final checkout tomorrow at 7:30 AM — easy last day with Mirror Lake morning walk, then home.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 4 ======== -->
+<div class="dc" id="d4">
+  <div class="ds d4s">
+    <h2>Day 4 — Final Check-Out · Mirror Lake Morning Walk · Last Lunch · Drive Home</h2>
+    <p>Thursday, August 6 · Estimated arrival back in Bay Area ~5:30 PM</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">7:00 AM</div><div class="l">Breakfast</div></div>
+      <div class="ds-stat"><div class="v">7:30 AM</div><div class="l">Check-Out</div></div>
+      <div class="ds-stat"><div class="v">~7 km</div><div class="l">Mirror Lake</div></div>
+      <div class="ds-stat"><div class="v">~5:30 PM</div><div class="l">Est. Home</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:00 AM</div><div class="ed">30 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 Final Lodge Breakfast</div>
+      <div class="echips"><span class="chip cf">Self-Cook at Lodge</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Tip</span><span class="iv">Use up whatever's left in the fridge. Relaxed last breakfast — eat everything so you don't have to carry it back.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">7:30 AM</div><div class="ed">Check-Out</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🚪 Final Check-Out → Head to Valley</div>
+      <div class="echips"><span class="chip cd">~50 min to Curry Village</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Route</span><span class="iv">Fort Nip Trail → <span class="rd">CA-41 N</span> → South Entrance → <span class="rd">Wawona Rd</span> → <span class="rd">Southside Dr</span> → Curry Village parking lot</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">9:00 AM</div><div class="ed">2 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🪞 Mirror Lake Loop Trail</div>
+      <div class="echips"><span class="chip cp">Curry Village Parking</span><span class="chip cw">4.5 mi loop</span><span class="chip cw">100 ft gain</span><span class="chip cw">Easy, Flat</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Curry Village parking lot (free) · <a href="https://maps.google.com/?q=37.7361,-119.5686" target="_blank">📍 37.7361, -119.5686</a> → free shuttle stop #17, or walk 1.2 km to trailhead</span></div>
+        <div class="ir"><span class="il">Trail</span><span class="iv">Shuttle stop #17 → along Tenaya Creek → Mirror Lake (1.2 km) → clockwise around the lake → optional early exit at junction → back to stop #17 (full 7 km loop)</span></div>
+        <div class="ir"><span class="il">Highlights</span><span class="iv">Half Dome reflection in the lake (best in still morning air). Flat trail — easy on tired legs. No permit needed.</span></div>
+        <div class="ir"><span class="il">Note</span><span class="iv">Water level is low in August, but the trail and views remain beautiful. Early morning light is best for photography.</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/mirror-lake-loop" target="_blank">🗺 AllTrails — Mirror Lake Loop</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">11:30 AM</div><div class="ed">~8 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Move Car → Yosemite Valley Lodge</div>
+      <div class="echips"><span class="chip cd">Curry Village → Valley Lodge</span></div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:00 PM</div><div class="ed">60 min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🍔 Last Lunch — Base Camp Eatery</div>
+      <div class="echips"><span class="chip cf">Valley Lodge</span><span class="chip cp">Free Parking</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Parking</span><span class="iv">Yosemite Valley Lodge lot · <a href="https://maps.google.com/?q=37.7437,-119.5989" target="_blank">📍 37.7437, -119.5989</a> (same lot as last night's Mountain Room)</span></div>
+        <div class="ir"><span class="iv">Base Camp Eatery inside Valley Lodge — same building as Mountain Room, casual menu, relaxed sendoff meal.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">1:30 PM</div><div class="ed">~4 hrs</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 Drive Home to San Francisco</div>
+      <div class="echips"><span class="chip cd">Scenic Route Recommended</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">Scenic</span><span class="iv">Valley Lodge → <span class="rd">CA-140 W</span> (along Merced River canyon — beautiful) → <span class="rd">CA-99 N</span> → <span class="rd">I-580 W</span>, ~4 hours</span></div>
+        <div class="ir"><span class="il">Fast</span><span class="iv">Valley Lodge → <span class="rd">CA-41 S</span> (South Entrance exit) → <span class="rd">CA-99 N</span> → <span class="rd">I-580 W</span>, ~3.5 hours</span></div>
+        <div class="ir"><span class="il">Stop</span><span class="iv">In-N-Out Burger in Tracy (~1 hour from Bay Area) — the perfect end to the trip</span></div>
+        <div class="ir"><span class="il">ETA</span><span class="iv">Estimated arrival in Bay Area: 5:30–6:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p><strong>Yosemite Family Trip Guide 2026</strong> · Brian Wan Family · 4 Days / 3 Nights · August 3–6</p>
+  <p style="margin-top:6px">🏕 Sierra Mountain Lodge · <a href="tel:+15596837673" style="color:inherit">(559) 683-7673</a> · sierramountainlodge.com</p>
+  <p style="margin-top:4px">🍽️ Mountain Room Restaurant ✓ Aug 5 @ 5:00 PM · <a href="tel:+12093721403" style="color:inherit">(209) 372-1403</a></p>
+  <p style="margin-top:8px">📍 All GPS links open directly in Google Maps</p>
+  <p style="margin-top:4px">💡 Save offline or screenshot each day — cell signal is unreliable inside the park</p>
+</div>
+
+<script>
+function sd(id,btn){
+  document.querySelectorAll('.dc').forEach(d=>d.classList.remove('on'));
+  document.querySelectorAll('.dn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
