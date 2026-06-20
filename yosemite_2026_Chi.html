@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>優勝美地家庭遊攻略 2026 · Brian Wan</title>
+<style>
+  :root {
+    --teal:#0F6E56;--teal-light:#E1F5EE;--teal-dark:#085041;
+    --blue:#185FA5;--blue-light:#E6F1FB;
+    --amber:#854F0B;--amber-light:#FAEEDA;
+    --purple:#534AB7;--purple-light:#EEEDFE;
+    --red:#A32D2D;--red-light:#FCEBEB;
+    --green:#3B6D11;
+    --gray:#5F5E5A;--gray-light:#F1EFE8;
+    --text:#1a1a18;--text-muted:#6b6b65;--text-faint:#9a9a93;
+    --border:rgba(0,0,0,0.1);--border-mid:rgba(0,0,0,0.15);
+    --bg:#fafaf8;--bg-card:#ffffff;--bg-sec:#f4f3ef;
+    --r:10px;--rs:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:14px;}
+  .header{background:var(--teal);color:#fff;padding:28px 20px 22px;}
+  .header h1{font-size:22px;font-weight:600;letter-spacing:-0.3px;}
+  .header p{font-size:13px;opacity:.8;margin-top:4px;}
+  .h-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .h-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 12px;font-size:12px;}
+  .h-conf{background:rgba(255,255,255,.9);color:var(--teal-dark);font-weight:500;}
+  .day-nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .dn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border-mid);background:var(--bg-sec);color:var(--text-muted);cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;white-space:nowrap;}
+  .dn:hover{border-color:var(--gray);color:var(--text);}
+  .dn.on{color:#fff;border-color:transparent;}
+  .dn.d1.on{background:var(--teal);}
+  .dn.d2.on{background:var(--blue);}
+  .dn.d3.on{background:var(--amber);}
+  .dn.d4.on{background:var(--purple);}
+  .dc{display:none;padding:16px;max-width:780px;margin:0 auto;}
+  .dc.on{display:block;}
+  .ds{border-radius:var(--r);padding:14px 16px;margin-bottom:16px;color:#fff;}
+  .ds h2{font-size:15px;font-weight:600;}
+  .ds p{font-size:12px;opacity:.8;margin-top:3px;}
+  .ds-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .ds-stat{background:rgba(255,255,255,.2);border-radius:var(--rs);padding:6px 10px;text-align:center;flex:1;min-width:70px;}
+  .ds-stat .v{font-size:13px;font-weight:600;}
+  .ds-stat .l{font-size:10px;opacity:.75;margin-top:1px;}
+  .d1s{background:var(--teal);}.d2s{background:var(--blue);}.d3s{background:var(--amber);}.d4s{background:var(--purple);}
+  .ev{display:flex;margin-bottom:0;}
+  .el{width:62px;flex-shrink:0;padding:12px 8px 12px 0;text-align:right;}
+  .et{font-size:11px;font-weight:600;color:var(--text-muted);}
+  .ed{font-size:10px;color:var(--text-faint);margin-top:2px;}
+  .esp{width:24px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:14px;}
+  .edot{width:10px;height:10px;border-radius:50%;border:2px solid;flex-shrink:0;}
+  .eline{width:1.5px;flex:1;min-height:18px;margin-top:3px;opacity:.2;}
+  .eb{flex:1;padding:10px 0 16px 10px;}
+  .etitle{font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .echips{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+  .chip{font-size:10px;font-weight:500;padding:2px 7px;border-radius:8px;white-space:nowrap;}
+  .cd{background:#FAEEDA;color:#633806;}
+  .cp{background:#E6F1FB;color:#0C447C;}
+  .cw{background:#E1F5EE;color:#085041;}
+  .cf{background:#FBEAF0;color:#4B1528;}
+  .ch{background:#EEEDFE;color:#26215C;}
+  .cwa{background:#FCEBEB;color:#A32D2D;}
+  .cc{background:#1D9E75;color:#fff;}
+  .info{background:var(--bg-sec);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;margin-top:8px;}
+  .ir{display:flex;gap:8px;margin-bottom:4px;align-items:flex-start;}
+  .ir:last-child{margin-bottom:0;}
+  .il{font-size:10px;font-weight:500;color:var(--text-faint);min-width:46px;padding-top:2px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em;}
+  .iv{font-size:12px;color:var(--text-muted);flex:1;line-height:1.6;}
+  .iv a{color:var(--blue);text-decoration:none;font-weight:500;}
+  .iv a:hover{text-decoration:underline;}
+  .rd{display:inline-block;font-size:10px;font-weight:600;padding:1px 5px;border-radius:3px;background:var(--blue);color:#fff;margin:0 1px;}
+  .sdiv{border:none;border-top:1px dashed var(--border-mid);margin:4px 0 12px 86px;}
+  .wb{border-radius:var(--rs);padding:9px 12px;margin:8px 0 0;font-size:12px;line-height:1.65;}
+  .wba{background:var(--amber-light);color:#633806;border-left:3px solid var(--amber);border-radius:0 var(--rs) var(--rs) 0;}
+  .wbr{background:var(--red-light);color:var(--red);border-left:3px solid var(--red);border-radius:0 var(--rs) var(--rs) 0;}
+  .wbt{background:var(--teal-light);color:var(--teal-dark);border-left:3px solid var(--teal);border-radius:0 var(--rs) var(--rs) 0;}
+  .atl{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--bg-sec);border:1px solid var(--border);border-radius:var(--rs);margin-top:6px;font-size:12px;color:var(--blue);text-decoration:none;font-weight:500;}
+  .atl:hover{background:var(--blue-light);}
+  .footer{background:var(--gray-light);border-top:1px solid var(--border);padding:20px 16px;text-align:center;color:var(--text-faint);font-size:11px;margin-top:24px;}
+  .footer strong{color:var(--text-muted);}
+  @media print{.day-nav{display:none;}.dc{display:block!important;page-break-after:always;}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏔 優勝美地家庭遊攻略 2026</h1>
+  <p>Brian Wan 家庭 · 4天3夜 · 8月3日（一）– 8月6日（四）· 舊金山出發</p>
+  <div class="h-pills">
+    <span class="h-pill">🏕 Sierra Mountain Lodge, Ahwahnee</span>
+    <span class="h-pill">👨‍👩‍👧‍👦 4人家庭</span>
+    <span class="h-pill">📞 (559) 683-7673</span>
+    <span class="h-pill h-conf">✓ Mountain Room 已訂 8/5 5:00pm</span>
+  </div>
+</div>
+
+<div class="day-nav">
+  <button class="dn d1 on" onclick="sd('d1',this)">🟢 8/3 第1天</button>
+  <button class="dn d2" onclick="sd('d2',this)">🔵 8/4 第2天</button>
+  <button class="dn d3" onclick="sd('d3',this)">🟠 8/5 第3天</button>
+  <button class="dn d4" onclick="sd('d4',this)">🟣 8/6 第4天</button>
+</div>
+
+<!-- ======== DAY 1 ======== -->
+<div class="dc on" id="d1">
+  <div class="ds d1s">
+    <h2>第1天 — 舊金山 → Oakhurst 採購 → 優勝美地山谷 → 馬里波薩巨杉林 → 小屋</h2>
+    <p>8月3日（星期一）· 目標下午5時返抵小屋</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">05:30</div><div class="l">早餐</div></div>
+      <div class="ds-stat"><div class="v">06:00</div><div class="l">出發</div></div>
+      <div class="ds-stat"><div class="v">~280 mi</div><div class="l">總里程</div></div>
+      <div class="ds-stat"><div class="v">~1.5 km</div><div class="l">步行距離</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">05:30</div><div class="ed">30分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#0F6E56;background:#0F6E56"></div><div class="eline" style="background:#0F6E56"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 家中早餐</div>
+      <div class="echips"><span class="chip cf">早餐</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">建議</span><span class="iv">輕便早餐：麥片、雞蛋吐司或即食麥片。長途駕車前吃飽，途中不需停餐。</span></div>
+        <div class="ir"><span class="il">備用</span><span class="iv">每人帶備1.5L飲用水上車 + 車上零食（堅果、水果、能量棒）</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">06:00</div><div class="ed">出發</div></div>
+    <div class="esp"><div class="edot" style="border-color:#0F6E56;background:#0F6E56"></div><div class="eline" style="background:#0F6E56"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 舊金山出發</div>
+      <div class="echips"><span class="chip cd">駕車 ~3小時至Oakhurst</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv"><span class="rd">I-680 N</span>→<span class="rd">I-580 E</span>→<span class="rd">I-205 E</span>→<span class="rd">CA-120 E</span>→<span class="rd">CA-140 E</span></span></div>
+        <div class="ir"><span class="il">提示</span><span class="iv">早出發避開灣區早高峰。途中不建議停車吃早餐，節省時間。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">09:00</div><div class="ed">40分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🛒 Vons 超市採購 — Oakhurst</div>
+      <div class="echips"><span class="chip cf">採購</span><span class="chip cp">免費停車</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">超市門口免費大型停車場 · <a href="https://maps.google.com/?q=37.3304,-119.6590" target="_blank">📍 37.3304, -119.6590</a></span></div>
+        <div class="ir"><span class="il">採購</span><span class="iv">4天早餐食材、野餐午餐材料、BBQ晚餐食材、行山零食、飲用水、防曬霜</span></div>
+        <div class="ir"><span class="il">下一站</span><span class="iv">繼續 <span class="rd">CA-140 E</span> 拱石入口（推薦，直入山谷）</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:15</div><div class="ed">入園</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🎫 拱石入口進入公園</div>
+      <div class="echips"><span class="chip cd">駕車入園</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">費用</span><span class="iv">數碼通行證 $35/車 · 預先在 <a href="https://recreation.gov" target="_blank">recreation.gov</a> 購買，入閘更快</span></div>
+        <div class="ir"><span class="il">路線</span><span class="iv">繼續 <span class="rd">CA-140 E</span> 入山谷，沿途有 Merced River 峽谷景色</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:45</div><div class="ed">30分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">💧 新娘面紗瀑布 (Bridalveil Fall)</div>
+      <div class="echips"><span class="chip cp">停車場</span><span class="chip cw">往返 0.8km · 20–30分</span><span class="chip cw">容易</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Bridalveil Fall 停車場（免費）· <a href="https://maps.google.com/?q=37.7168,-119.6514" target="_blank">📍 37.7168, -119.6514</a></span></div>
+        <div class="ir"><span class="il">步道</span><span class="iv">停車場 → 緩坡鋪裝路 → 路口右轉 → 第一觀景點（0.3km）→ 瀑布底部（0.4km）→ 原路返回</span></div>
+        <div class="ir"><span class="il">注意</span><span class="iv">有水霧備防水外套。189米瀑布，8月份水量較小但仍美麗。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">11:30</div><div class="ed">60分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🥪 優勝美地村 — 午餐</div>
+      <div class="echips"><span class="chip cp">Village 停車場</span><span class="chip cf">Village Grill</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Yosemite Village 停車場 A/B（免費）· <a href="https://maps.google.com/?q=37.7486,-119.5874" target="_blank">📍 37.7486, -119.5874</a></span></div>
+        <div class="ir"><span class="il">午餐</span><span class="iv">Village Grill：漢堡/三文治/素食，戶外露台，$70–100/4人。旺季排隊約10–20分鐘。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:30</div><div class="ed">60分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🏛️ Valley Visitor Center — 地質展覽</div>
+      <div class="echips"><span class="chip cw">步行3分鐘</span><span class="chip cw">免費入場</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">內容</span><span class="iv">冰川侵蝕地質展覽、生態系統、原住民文化。對科學有興趣的女兒必看。館內有冷氣。開放：9am–5pm</span></div>
+        <div class="ir"><span class="il">順便</span><span class="iv">旁邊禮品店有地質/科學主題精品，可先看看，第3天再購買（避免行山時帶著）</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">13:30</div><div class="ed">30分車程</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 前往馬里波薩巨杉林</div>
+      <div class="echips"><span class="chip cd">Village → CA-41 S，約30分鐘</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Village 停車場 → <span class="rd">Wawona Rd</span> → <span class="rd">CA-41 S</span> → Mariposa Grove 指示牌右轉</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">14:00</div><div class="ed">1.5–2小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#3B6D11;background:#3B6D11"></div><div class="eline" style="background:#3B6D11"></div></div>
+    <div class="eb">
+      <div class="etitle">🌲 馬里波薩巨杉林 — Grizzly Giant Loop</div>
+      <div class="echips"><span class="chip cp">接駁停車場</span><span class="chip cw">環形 3.2km</span><span class="chip cw">容易–中等</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Mariposa Grove 接駁停車場（免費）· <a href="https://maps.google.com/?q=37.5065,-119.6307" target="_blank">📍 37.5065, -119.6307</a> → 免費巴士5分鐘進林</span></div>
+        <div class="ir"><span class="il">步道</span><span class="iv">林區入口 → Fallen Monarch（0.2km）→ Bachelor &amp; Three Graces（0.5km）→ Grizzly Giant（0.8km）→ California Tunnel Tree（1.0km）→ 環形回起點（2.0km）</span></div>
+        <div class="ir"><span class="il">亮點</span><span class="iv">Grizzly Giant：樹齡1,800年，直徑9米。California Tunnel Tree 可穿越拍照。</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/grizzly-giant-loop-trail" target="_blank">🗺 AllTrails — Grizzly Giant Loop</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">16:00</div><div class="ed">約45分鐘</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 抵達山嶺小屋 — 辦理入住</div>
+      <div class="echips"><span class="chip ch">已訂位</span><span class="chip cp">免費私人停車</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Mariposa Grove → <span class="rd">CA-41 N</span> 少許 → Ahwahnee Fort Nip Trail，約45分鐘</span></div>
+        <div class="ir"><span class="il">停車</span><span class="iv">小屋免費有蓋停車場 · <a href="https://maps.google.com/?q=37.4036,-119.7308" target="_blank">📍 37.4036, -119.7308</a></span></div>
+        <div class="ir"><span class="il">入住</span><span class="iv">密碼自助入住（密碼在預訂確認郵件）。Sierra Suite：1,200平方呎，2層，睡4人，有氣爐廚房。</span></div>
+        <div class="ir"><span class="il">電話</span><span class="iv"><a href="tel:+15596837673">(559) 683-7673</a>（每日 8am–8pm PST）</span></div>
+        <div class="ir"><span class="il">晚上</span><span class="iv">BBQ晚餐（食材已在 Vons 購好）+ 露台休息。明早6:00出發，記得提前備好野餐午餐。</span></div>
+      </div>
+      <div class="wb wbt">✅ 第1天目標：下午5時前返抵小屋，輕鬆完成。全日行程無需等待日落，早早休息迎接明天最精彩的第2天！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 2 ======== -->
+<div class="dc" id="d2">
+  <div class="ds d2s">
+    <h2>第2天 — 冰川點 · 哨兵圓頂 · 梅塞德河 · 隧道景觀台日落</h2>
+    <p>8月4日（星期二）· 公園內環形路線 · 日落後返回小屋</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">06:30</div><div class="l">出發</div></div>
+      <div class="ds-stat"><div class="v">~70 mi</div><div class="l">公園內里程</div></div>
+      <div class="ds-stat"><div class="v">~5 km</div><div class="l">步行距離</div></div>
+      <div class="ds-stat"><div class="v">~8:00pm</div><div class="l">日落</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">06:00</div><div class="ed">30分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 小屋早餐 + 準備野餐午餐</div>
+      <div class="echips"><span class="chip cf">小屋廚房自煮</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">早餐</span><span class="iv">雞蛋吐司 + 咖啡（小屋有完整廚房及氣爐）。約20分鐘完成。</span></div>
+        <div class="ir"><span class="il">同時</span><span class="iv">打包今天野餐午餐。帶備足夠飲水、防曬霜、外套（冰川點海拔高，早上清涼）。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">06:30</div><div class="ed">1h 15min</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 小屋出發 → 冰川點</div>
+      <div class="echips"><span class="chip cd">約50英里，1h 15min</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv"><span class="rd">CA-41 N</span> → 南入口 → <span class="rd">Wawona Rd</span> → <span class="rd">Glacier Point Rd</span>（右轉）→ 冰川點停車場</span></div>
+        <div class="ir"><span class="il">提示</span><span class="iv">早出發搶停車位。Glacier Point Rd 沿途風景優美，可停路肩拍照。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">08:15</div><div class="ed">90分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🔭 冰川點 (Glacier Point) 觀景台</div>
+      <div class="echips"><span class="chip cp">停車場</span><span class="chip cw">步行 &lt;200m</span><span class="chip cw">極易</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Glacier Point 停車場（免費，~150位，設廁所）· <a href="https://maps.google.com/?q=37.7277,-119.5743" target="_blank">📍 37.7277, -119.5743</a></span></div>
+        <div class="ir"><span class="il">步行</span><span class="iv">停車場 → 鋪裝小路3分鐘 → 主觀景台。海拔2,200m，與 Half Dome 平視。</span></div>
+        <div class="ir"><span class="il">亮點</span><span class="iv">可從上方俯視 Vernal Fall 及 Nevada Fall。護林員導賞約早上9時（女兒必聽）。</span></div>
+        <div class="ir"><span class="il">注意</span><span class="iv">高海拔早晨清涼，帶外套。8時前到達停車位較多。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:00</div><div class="ed">5分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 移車 → 哨兵圓頂登山口</div>
+      <div class="echips"><span class="chip cd">沿 Glacier Point Rd 回頭約5分鐘</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">冰川點停車場 → Glacier Point Rd 往西約1英里 → 哨兵圓頂 / Taft Point 登山口</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:30</div><div class="ed">1.5–2小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🥾 哨兵圓頂 (Sentinel Dome) 行山</div>
+      <div class="echips"><span class="chip cp">停車場</span><span class="chip cw">往返 3.5km</span><span class="chip cw">爬升 120m</span><span class="chip cw">中等</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Sentinel Dome / Taft Point 登山口（免費，設廁所）· <a href="https://maps.google.com/?q=37.7126,-119.5863" target="_blank">📍 37.7126, -119.5863</a></span></div>
+        <div class="ir"><span class="il">步道</span><span class="iv">登山口 → 木橋（0.3km）→ 開闊花崗岩 → 圓頂底部（0.9km）→ 陡坡攀爬 → 頂部（1.1km）→ 原路返回</span></div>
+        <div class="ir"><span class="il">頂部</span><span class="iv">360°全景：El Capitan、Yosemite Falls、Half Dome、Nevada Fall 盡收眼底</span></div>
+        <div class="ir"><span class="il">注意</span><span class="iv">無需許可證。最後300m裸岩陡坡，防滑鞋必備。無遮蔭，帶防曬及水。</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/sentinel-dome-trail" target="_blank">🗺 AllTrails — Sentinel Dome Trail</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">13:00</div><div class="ed">野餐</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🧺 野餐午餐 — 哨兵圓頂頂部或登山口</div>
+      <div class="echips"><span class="chip cf">自備午餐</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">地點</span><span class="iv">圓頂頂部（景觀最佳，風大注意食物）或返回登山口旁空地享用。</span></div>
+        <div class="ir"><span class="il">省錢</span><span class="iv">自備食材，節省 $50–60 餐廳費用</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">14:00</div><div class="ed">30分車程</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 前往 Sentinel Beach 游泳</div>
+      <div class="echips"><span class="chip cd">Glacier Point Rd → CA-41 N → 山谷，約30分鐘</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">登山口 → <span class="rd">Glacier Point Rd</span> 往東 → <span class="rd">Wawona Rd</span> → 入山谷 → Sentinel Beach</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">14:30</div><div class="ed">90分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🏊 梅塞德河游泳 — Sentinel Beach</div>
+      <div class="echips"><span class="chip cp">免費停車</span><span class="chip cw">步行 &lt;100m</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Sentinel Beach 停車場（免費，設廁所及野餐桌）· <a href="https://maps.google.com/?q=37.7345,-119.6053" target="_blank">📍 37.7345, -119.6053</a></span></div>
+        <div class="ir"><span class="iv">沙灘戲水消暑。8月份氣溫高達30°C+，河水清涼，孩子必愛。帶泳衣及毛巾。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">16:00</div><div class="ed">⚑ 出發</div></div>
+    <div class="esp"><div class="edot" style="border-color:#D85A30;background:#D85A30"></div><div class="eline" style="background:#D85A30"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 最遲 4:00pm 前往 Tunnel View</div>
+      <div class="echips"><span class="chip cd">約5分鐘車程</span><span class="chip cwa">停車緩衝15–20分鐘</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Sentinel Beach → <span class="rd">Northside Dr</span> 西行 → <span class="rd">Wawona Rd</span> → Tunnel View 停車場，約5分鐘</span></div>
+        <div class="ir"><span class="il">停車</span><span class="iv">Tunnel View 東端停車場（免費，~40位，旺季極搶手）· <a href="https://maps.google.com/?q=37.7158,-119.6775" target="_blank">📍 37.7158, -119.6775</a></span></div>
+        <div class="ir"><span class="il">備選</span><span class="iv">若停車場滿 → 停 Bridalveil Fall 停車場，步行5分鐘至觀景台</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">16:20</div><div class="ed">~2.5小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🌅 Tunnel View — 黃金時段 + 日落全景</div>
+      <div class="echips"><span class="chip cw">步行 &lt;50m</span><span class="chip cw">黃金時段 ~6:50pm</span><span class="chip cw">8月日落 ~8:00pm</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">景觀</span><span class="iv">El Capitan（左）+ Half Dome（中遠）+ Bridalveil Fall（右），優勝美地最經典全景。</span></div>
+        <div class="ir"><span class="il">拍攝</span><span class="iv">黃金時段（6:50–7:10pm）光線最美，El Capitan 呈現暖橙色調。帶三腳架效果最佳。</span></div>
+      </div>
+      <div class="wb wba">💡 8月份日落約晚上 7:50–8:10。今天從小屋出發，晚回沒問題——不像第1天長途駕車後再等到深夜。第2天才看日落最適合！</div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">19:30</div><div class="ed">抵達~20:15</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 返回山嶺小屋 — BBQ晚餐 + 觀星</div>
+      <div class="echips"><span class="chip cd">CA-41 S，約45分鐘</span><span class="chip ch">小屋</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Tunnel View → <span class="rd">Wawona Rd</span> → <span class="rd">CA-41 S</span> → Ahwahnee，約45分鐘</span></div>
+        <div class="ir"><span class="il">晚上</span><span class="iv">BBQ晚餐 + 觀星。明天第3天是最精彩一天（霧中步道 + Mountain Room），早點休息。</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 3 ======== -->
+<div class="dc" id="d3">
+  <div class="ds d3s">
+    <h2>第3天 — 霧中步道 · 手信購物 · Mountain Room 晚餐 · 返回小屋</h2>
+    <p>8月5日（星期三）· Mountain Room 已訂 5:00pm · (209) 372-1403 · 今晚仍留宿小屋</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">07:00</div><div class="l">出發</div></div>
+      <div class="ds-stat"><div class="v">~6 km</div><div class="l">步行距離</div></div>
+      <div class="ds-stat"><div class="v">17:00</div><div class="l">Mountain Room</div></div>
+      <div class="ds-stat"><div class="v">今晚</div><div class="l">返回小屋</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">06:30</div><div class="ed">30分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#854F0B;background:#854F0B"></div><div class="eline" style="background:#854F0B"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 小屋早餐</div>
+      <div class="echips"><span class="chip cf">小屋廚房自煮</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">早餐</span><span class="iv">燕麥/麥片或雞蛋吐司。<strong>今天不需退房</strong>，行李留在房間，輕裝出發。</span></div>
+        <div class="ir"><span class="il">帶備</span><span class="iv">防水外套（霧中步道必備）、防滑行山鞋、備用乾衣物（步道會全身濕）、晚餐換洗衣物（放車內）</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">07:00</div><div class="ed">出發</div></div>
+    <div class="esp"><div class="edot" style="border-color:#854F0B;background:#854F0B"></div><div class="eline" style="background:#854F0B"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 小屋出發 → Happy Isles</div>
+      <div class="echips"><span class="chip cd">約50分鐘至山谷</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Fort Nip Trail → <span class="rd">CA-41 N</span> → 南入口 → <span class="rd">Wawona Rd</span> → 入山谷 → <span class="rd">Southside Dr</span> → Happy Isles 停車場</span></div>
+        <div class="ir"><span class="il">注意</span><span class="iv">今晚會返回小屋，無需退房或帶走所有行李。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">08:30</div><div class="ed">2–2.5小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#185FA5;background:#185FA5"></div><div class="eline" style="background:#185FA5"></div></div>
+    <div class="eb">
+      <div class="etitle">🌊 霧中步道 → 春雪瀑布 (Vernal Fall)</div>
+      <div class="echips"><span class="chip cp">Happy Isles 停車</span><span class="chip cw">往返 4.8km</span><span class="chip cw">爬升 300m</span><span class="chip cwa">含600級台階</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Happy Isles Trailhead（免費，設熊箱）· <a href="https://maps.google.com/?q=37.7349,-119.5665" target="_blank">📍 37.7349, -119.5665</a> — 9時前到達搶位</span></div>
+        <div class="ir"><span class="il">備選</span><span class="iv">若停車場滿 → Curry Village · <a href="https://maps.google.com/?q=37.7361,-119.5686" target="_blank">📍 37.7361, -119.5686</a> → 穿梭巴士第16站</span></div>
+        <div class="ir"><span class="il">熊箱</span><span class="iv">食物及有氣味物品必須放入熊箱（黑熊會破車門）</span></div>
+        <div class="ir"><span class="il">步道</span><span class="iv">登山口 → 木橋觀景（1.2km，可在此折返）→ Mist Trail 分叉（1.4km）→ 600級台階 → 瀑布頂（2.4km）→ John Muir Trail 下山（推薦，護膝）</span></div>
+        <div class="ir"><span class="il">裝備</span><span class="iv">防水外套必備（水霧大，衣物全濕）。防滑鞋。上山 Mist Trail，下山 John Muir Trail。</span></div>
+      </div>
+      <div class="wb wbr">⚠️ 安全：絕對不可進入河流或 Emerald Pool——水流強勁，每年均有意外。台階極滑，下山比上山更危險。</div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/vernal-and-nevada-falls-via-the-mist-trail" target="_blank">🗺 AllTrails — Mist Trail (Vernal &amp; Nevada Falls)</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">11:30</div><div class="ed">~8分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 移車 → 優勝美地村</div>
+      <div class="echips"><span class="chip cd">沿 Valley Rd</span></div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:00</div><div class="ed">2小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🥪 輕量午餐 + 手信購物 — 優勝美地村</div>
+      <div class="echips"><span class="chip cf">Degnan's Kitchen</span><span class="chip cp">Village 停車場</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Yosemite Village 停車場 A/B（免費）· <a href="https://maps.google.com/?q=37.7486,-119.5874" target="_blank">📍 37.7486, -119.5874</a></span></div>
+        <div class="ir"><span class="il">午餐</span><span class="iv">Degnan's Kitchen 三文治（$13–16/人）。輕量午餐，留肚等晚上 Mountain Room 大餐。</span></div>
+        <div class="ir"><span class="il">手信</span><span class="iv">Valley Visitor Center 禮品店：地質/科學主題精品（女兒）、紀念T恤。梳洗換衫準備晚餐。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">16:00</div><div class="ed">⚑ 截止</div></div>
+    <div class="esp"><div class="edot" style="border-color:#D85A30;background:#D85A30"></div><div class="eline" style="background:#D85A30"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 最遲 4:00pm 離開 → Mountain Room</div>
+      <div class="echips"><span class="chip cd">Village → Valley Lodge，約5分鐘</span><span class="chip cwa">4:45前抵達停車場</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Village 停車場 → <span class="rd">Northside Dr</span> → Yosemite Valley Lodge</span></div>
+        <div class="ir"><span class="il">停車</span><span class="iv">Yosemite Valley Lodge 停車場（免費）· <a href="https://maps.google.com/?q=37.7437,-119.5989" target="_blank">📍 37.7437, -119.5989</a></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">16:45</div><div class="ed">訂位5:00pm</div></div>
+    <div class="esp"><div class="edot" style="border-color:#1D9E75;background:#1D9E75"></div><div class="eline" style="background:#1D9E75"></div></div>
+    <div class="eb">
+      <div class="etitle">🍽️ Mountain Room Restaurant <span class="chip cc">✓ 已訂 5:00pm</span></div>
+      <div class="echips"><span class="chip cp">Valley Lodge 免費停車</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">地址</span><span class="iv">Yosemite Valley Lodge，停車後向左，餐廳在主樓右側，步行約3分鐘</span></div>
+        <div class="ir"><span class="il">菜式</span><span class="iv">牛排、鱒魚、海鮮。優勝美地瀑布全景景觀。4人預算 $220–320（含稅及服務費）。</span></div>
+        <div class="ir"><span class="il">電話</span><span class="iv"><a href="tel:+12093721403">(209) 372-1403</a></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">19:00</div><div class="ed">抵達~19:45</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🏡 返回山嶺小屋 — 繼續留宿</div>
+      <div class="echips"><span class="chip cd">CA-41 S，約45分鐘</span><span class="chip ch">小屋（最後一晚）</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Valley Lodge → <span class="rd">CA-41 S</span> → Ahwahnee，抵達約 19:45</span></div>
+        <div class="ir"><span class="il">晚上</span><span class="iv">輕鬆休息，回味 Mountain Room 美食。明天早上可睡至8時，9時退房即可。</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== DAY 4 ======== -->
+<div class="dc" id="d4">
+  <div class="ds d4s">
+    <h2>第4天 — 輕鬆退房 · 鏡湖晨走 · 最後午餐 · 返回舊金山</h2>
+    <p>8月6日（星期四）· 悠閒最後一天 · 預計下午6時返抵灣區</p>
+    <div class="ds-stats">
+      <div class="ds-stat"><div class="v">08:00</div><div class="l">早餐</div></div>
+      <div class="ds-stat"><div class="v">09:00</div><div class="l">退房</div></div>
+      <div class="ds-stat"><div class="v">~7 km</div><div class="l">鏡湖步道</div></div>
+      <div class="ds-stat"><div class="v">~18:00</div><div class="l">預計返抵</div></div>
+    </div>
+  </div>
+
+  <div class="ev">
+    <div class="el"><div class="et">08:00</div><div class="ed">45分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🍳 悠閒最後早餐 + 收拾行李</div>
+      <div class="echips"><span class="chip cf">小屋廚房自煮</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">建議</span><span class="iv">用完冰箱剩餘食材。今天不趕時間，慢慢享用早餐，邊吃邊收拾行李。</span></div>
+        <div class="ir"><span class="il">提示</span><span class="iv">今天是輕鬆一天，不需早起。早上8時起，9時退房，完全沒有壓力。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">09:00</div><div class="ed">退房</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🚪 輕鬆退房 → 前往山谷</div>
+      <div class="echips"><span class="chip cd">約50分鐘至 Curry Village</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">路線</span><span class="iv">Fort Nip Trail → <span class="rd">CA-41 N</span> → 南入口 → <span class="rd">Wawona Rd</span> → <span class="rd">Southside Dr</span> → Curry Village 停車場</span></div>
+        <div class="ir"><span class="il">心情</span><span class="iv">不急！今天預計下午6時到家，有充裕時間慢慢遊覽。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">10:00</div><div class="ed">2小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div><div class="eline" style="background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🪞 鏡湖 (Mirror Lake) 環湖步道</div>
+      <div class="echips"><span class="chip cp">Curry Village 停車</span><span class="chip cw">環形 7km</span><span class="chip cw">爬升 30m</span><span class="chip cw">容易，平坦</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Curry Village 停車場（免費）· <a href="https://maps.google.com/?q=37.7361,-119.5686" target="_blank">📍 37.7361, -119.5686</a> → 穿梭巴士第17站，或步行1.2km</span></div>
+        <div class="ir"><span class="il">步道</span><span class="iv">第17站 → 沿 Tenaya Creek → 鏡湖（1.2km）→ 順時針環湖 → 路口可提早折返 → 回第17站（7km全環）</span></div>
+        <div class="ir"><span class="il">亮點</span><span class="iv">Half Dome 倒影。平坦輕鬆，適合腿部疲累的最後一天。無需許可證。</span></div>
+        <div class="ir"><span class="il">注意</span><span class="iv">8月份水位較低，但步道景觀仍美。若覺得腳累，可只走至鏡湖觀景後折返（往返2.4km）。</span></div>
+      </div>
+      <a class="atl" href="https://www.alltrails.com/trail/us/california/mirror-lake-loop" target="_blank">🗺 AllTrails — Mirror Lake Loop</a>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">12:30</div><div class="ed">~8分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#5F5E5A;background:#5F5E5A"></div><div class="eline" style="background:#5F5E5A"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 移車 → Yosemite Valley Lodge</div>
+      <div class="echips"><span class="chip cd">Curry Village → Valley Lodge</span></div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">13:00</div><div class="ed">60分</div></div>
+    <div class="esp"><div class="edot" style="border-color:#BA7517;background:#BA7517"></div><div class="eline" style="background:#BA7517"></div></div>
+    <div class="eb">
+      <div class="etitle">🍔 最後午餐 — Base Camp Eatery</div>
+      <div class="echips"><span class="chip cf">Valley Lodge</span><span class="chip cp">免費停車</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">停車</span><span class="iv">Yosemite Valley Lodge 停車場 · <a href="https://maps.google.com/?q=37.7437,-119.5989" target="_blank">📍 37.7437, -119.5989</a>（昨晚 Mountain Room 同一停車場）</span></div>
+        <div class="ir"><span class="il">午餐</span><span class="iv">Base Camp Eatery（Valley Lodge 內，與 Mountain Room 同一建築）。多種選擇，輕鬆告別優勝美地。</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sdiv"></div>
+
+  <div class="ev">
+    <div class="el"><div class="et">14:00</div><div class="ed">~4小時</div></div>
+    <div class="esp"><div class="edot" style="border-color:#534AB7;background:#534AB7"></div></div>
+    <div class="eb">
+      <div class="etitle">🚗 返回舊金山</div>
+      <div class="echips"><span class="chip cd">推薦景觀路線</span></div>
+      <div class="info">
+        <div class="ir"><span class="il">景觀線</span><span class="iv">Valley Lodge → <span class="rd">CA-140 W</span>（沿 Merced River 峽谷，風景優美）→ <span class="rd">CA-99 N</span> → <span class="rd">I-580 W</span>，約4小時</span></div>
+        <div class="ir"><span class="il">快速線</span><span class="iv">Valley Lodge → <span class="rd">CA-41 S</span>（南入口出）→ <span class="rd">CA-99 N</span> → <span class="rd">I-580 W</span>，約3.5小時</span></div>
+        <div class="ir"><span class="il">中途停</span><span class="iv">Tracy 的 In-N-Out Burger（距灣區約1小時）— 旅程完美句號</span></div>
+        <div class="ir"><span class="il">返抵</span><span class="iv">預計下午 6:00 左右抵達灣區</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p><strong>優勝美地家庭遊攻略 2026</strong> · Brian Wan 家庭 · 4天3夜 · 8月3–6日</p>
+  <p style="margin-top:6px">🏕 Sierra Mountain Lodge · <a href="tel:+15596837673" style="color:inherit">(559) 683-7673</a> · sierramountainlodge.com</p>
+  <p style="margin-top:4px">🍽️ Mountain Room Restaurant ✓ 8/5 5:00pm · <a href="tel:+12093721403" style="color:inherit">(209) 372-1403</a></p>
+  <p style="margin-top:8px">📍 所有 GPS 連結可直接點擊開啟 Google Maps 導航</p>
+  <p style="margin-top:4px">💡 建議截圖或印出備用 — 公園內手機信號不穩定</p>
+</div>
+
+<script>
+function sd(id,btn){
+  document.querySelectorAll('.dc').forEach(d=>d.classList.remove('on'));
+  document.querySelectorAll('.dn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
